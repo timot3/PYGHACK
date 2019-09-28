@@ -1,33 +1,35 @@
-<p1><center>
-  OUTPUT GRAPH
-</p1></center>
-
 <script type="text/javascript">
 window.onload = function () {
 
-var chart = new CanvasJS.Chart("chartContainer", {
-  theme: "light1", // "light2", "dark1", "dark2"
-  animationEnabled: false, // change to true
-  title:{
-    text: "Basic Column Chart"
-  },
+  var chart = new CanvasJS.Chart("chartContainer", {
+    theme: "light1", // "light2", "dark1", "dark2"
+    animationEnabled: false, // change to true
+    title:{
+      text: "Importance of Different Features on Poverty Rate"
+    },
+    axisY: {
+      title: "Importance",
+    },
+    axisX: {
+      title: "Feature",
+    },
     data: [
     {
       // Change type to "bar", "area", "spline", "pie",etc.
       type: "column",
       dataPoints: [
-        { label: "apple",  y: (10 + (Math.random() * 5))},
-        { label: "orange", y: (15 + (Math.random() * 5))},
-        { label: "banana", y: (25 + (Math.random() * 5))},
-        { label: "mango",  y: (30 + (Math.random() * 5))},
-        { label: "grape",  y: (28 + (Math.random() * 5))}
+        { label: "Feature 1",  y: (0.05 + (Math.random() * 0.25))},
+        { label: "Feature 2", y: (0.12 + (Math.random() * 0.25))},
+        { label: "Feature 3", y: (0.51 + (Math.random() * 0.25))},
+        { label: "Feature 4",  y: (0.23 + (Math.random() * 0.25))},
+        { label: "Feature 5",  y: (0.54 + (Math.random() * 0.25))}
       ]
     }
     ]
   });
-
   chart.render();
-}
+
+  }
 </script>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
