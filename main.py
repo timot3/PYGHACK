@@ -1,50 +1,45 @@
-import csv
-import numpy as np
-import sklearn
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import normalize
-from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 
-train_X = np.zeros((30, 6))
-train_Y = np.zeros((30, 1))
-data = np.zeros((30, 7))
+import data_extraction as data
+import numpy as np
+import math
+import matplotlib.pyplot as plt
 
-with open("data.csv") as csv_file:
-    
-    csv_reader = csv.reader(csv_file, delimiter = ",")
-    line_count = -1
-    
-    for row in csv_reader:
-        
-        line_count += 1
-        
-        if(line_count == 0):
-            continue
-        
-        data[line_count - 1] = row[1:]
+DATA_FILE = 'data.txt'
+NUM_ROWS = 30
+TRAIN_VALIDATION_SPLIT = 0.95
+#np.random.seed(3)
 
-permutation = np.random.permutation(30)
+def RMSE(x, y):
+    acc = 0
+    for i in range(len(x)):
+        acc = acc + (x[i] - y[i])**2
+    return math.sqrt(acc / len(x))
 
-train_X = data[:, :6]
-train_Y = data[:, 6]
+print("Loading in Data")
+labels, features = data.extract_data_from_file(DATA_FILE, NUM_ROWS)
+#perm = np.random.permutation(len(labels))
+#features = features[perm].numpy()
+#labels = labels[perm].numpy()
+#
+#xtrain = features[:int(len(features) * TRAIN_VALIDATION_SPLIT), :]
+#ytrain = labels[:int(len(features) * TRAIN_VALIDATION_SPLIT)]
+#
+#xval = features[int(len(features) * TRAIN_VALIDATION_SPLIT):, :]
+#yval = labels[int(len(features) * TRAIN_VALIDATION_SPLIT):]
 
-train_X = train_X[permutation]
-train_Y = train_Y[permutation]
+clf = RandomForestRegressor(n_estimators=50)
 
-validation_X = train_X[24:]
-validation_Y = train_Y[24:]
+print("Initializing Training")
+clf.fit(features, labels)
 
-regressor = RandomForestRegressor(n_estimators = 10)
-regressor.fit(train_X, train_Y)
+plt.bar([i for i in range(1, 9)], clf.feature_importances_)
 
-error = 0
 
-for i in range(6):
-    predicted = regressor.predict(validation_X[i].reshape(1, -1))
-    actual = validation_Y[i]
-    error += (predicted - actual) ** 2
+#y_pred = clf.predict(xval)
+#
+#acc = RMSE(y_pred, yval)
+#
+#print("Model Accuracy: ", acc)
 
-error /= 6
-error =  error ** 0.5
-print(error)
+#print(clf.predict([[2.3,16631,15.7,44638,77991,59.7]]))
