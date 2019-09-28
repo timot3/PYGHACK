@@ -16,17 +16,8 @@ We trained a random forest classifier on data provided by [Champaign County Regi
 
 to generate a model that would identify the most important features that influence the poverty rate. We found that, (after median household income), the most influential features were average household size and language most often spoken at home.
 
-We would like to provide some resources that would help these families in need:
-
-Map of all food pantries in Champaign-Urbana:
-
-Free English Lessons:
-
-
-
 In Progress
 - [x] Aggregate all data in one location
 - [x] train the model on the data
 - [x] Create a website
-- [ ] Connect the model to the CSV input
 - [ ] Host the website off a service such as Azure or AWS
