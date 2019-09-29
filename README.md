@@ -1,5 +1,3 @@
-# PYGHACK
-
 ## **HOME @ PYGHACK.** focuses on real problems within the community.
 
 
