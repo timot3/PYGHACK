@@ -16,8 +16,12 @@ We trained a random forest classifier on data provided by [Champaign County Regi
 
 to generate a model that would identify the most important features that influence the poverty rate. We found that, (after median household income), the most influential features were average household size and language most often spoken at home.
 
+We hope our approach can be useful for iterative reductions to poverty, by allocating more money to the most influential factors first.
+
+Website: [cu-poverty.ml](cu-poverty.ml)
+
 In Progress
 - [x] Aggregate all data in one location
 - [x] train the model on the data
 - [x] Create a website
-- [ ] Host the website off a service such as Azure or AWS
+- [ ] Host the website off a service such as Azure or AWS, and use their ML capabilities to run the classifier on the cloud as well
