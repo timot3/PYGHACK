@@ -16,7 +16,7 @@ to generate a model that would identify the most important features that influen
 
 We hope our approach can be useful for iterative reductions to poverty, by allocating more money to the most influential factors first.
 
-Website: [cu-poverty.ml](cu-poverty.ml)
+Website: [cu-poverty.ml](https://cu-poverty.ml)
 
 In Progress
 - [x] Aggregate all data in one location
