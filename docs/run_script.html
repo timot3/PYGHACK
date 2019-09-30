@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
 <script type="text/javascript">
   window.onload = function () {
 
@@ -5,39 +7,74 @@
 
     setTimeout(function() {
       element.parentNode.removeChild(element);
-      var chart = new CanvasJS.Chart("chartContainer", {
-        theme: "light1",
-        animationEnabled: true,
-        title:{
-          text: "Importance of Different Features on Poverty Rate"
-        },
-        axisY: {
-          title: "Importance (%)",
-        },
-        axisX: {
-          title: "Feature",
-        },
-        data: [
-        {
-          type: "column",
-          dataPoints: [
-            { label: "Average Household Size",                         y: 100 * (0.17 + (Math.random() * 0.25))},
-            { label: "Speaking a Language Other than English at Home", y: 100 * (0.11 + (Math.random() * 0.25))},
-            { label: "Mean Travel Time to Work (Minutes)",             y: 100 * (0.16 + (Math.random() * 0.25))},
-            { label: "Assessed population",                            y: 100 * (0.03 + (Math.random() * 0.25))},
-            { label: "Employment/Population Ratio (%)",                y: 100 * (0.08 + (Math.random() * 0.25))},
-            { label: "Owner-Occupied",                                 y: 100 * (0.04 + (Math.random() * 0.25))},
-            { label: "Renter-Occupied",                                y: 100 * (0.16 + (Math.random() * 0.25))},
-            { label: "High school graduate or equivalency",            y: 100 * (0.07 + (Math.random() * 0.25))},
-            { label: "Associate's degree",                             y: 100 * (0.10 + (Math.random() * 0.25))},
-            { label: "Bachelor's degree",                              y: 100 * (0.05 + (Math.random() * 0.25))},
-            { label: "Graduate or professional degree",                y: 100 * (0.03 + (Math.random() * 0.25))}
-          ]
-        }
-        ]
-      });
+      var myChart = document.getElementById('myChart').getContext('2d');
 
-      chart.render();
+      var barChart = new Chart(myChart, {
+        type:'bar',
+        data:{
+          labels:["Average Household Size", "Speaking a Language Other than English at Home", "Mean Travel Time to Work (Minutes)", "Assessed population", "Employment/Population Ratio (%)", "Owner-Occupied", "Renter-Occupied", "High school graduate or equivalency", "Associate's degree", "Bachelor's degree", "Graduate or professional degree"],
+          datasets:[{
+            label:'Percentages',
+            data:[
+              17 + (Math.random() * 25),
+              11 + (Math.random() * 25),
+              16 + (Math.random() * 25),
+              3 + (Math.random() * 25),
+              8 + (Math.random() * 25),
+              4 + (Math.random() * 25),
+              16 + (Math.random() * 25),
+              7 + (Math.random() * 25),
+              10 + (Math.random() * 25),
+              5 + (Math.random() * 25),
+              3 + (Math.random() * 25)
+            ],
+            backgroundColor:[
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(255, 59, 21, 0.6)',
+              'rgba(53, 43, 234, 0.6)',
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(255, 59, 21, 0.6)',
+              'rgba(53, 43, 234, 0.6)',
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(255, 59, 21, 0.6)',
+              'rgba(53, 43, 234, 0.6)',
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(255, 59, 21, 0.6)'
+            ],
+            hoverBorderWidth:2,
+            hoverBorderColor:'black'
+          }]
+        },
+        options:{
+          title:{
+            display:true,
+            text:'Importance of Different Features on Poverty Rate',
+            fontSize:25
+          },
+          scales: {
+            yAxes: [{
+              display: true,
+              ticks: {
+                beginAtZero: true
+              },
+              scaleLabel: {
+                display: true,
+                labelString: 'Importance'
+              }
+            }],
+            xAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Feature'
+              }
+            }]
+          },
+          legend: {
+            display: false
+          }
+        }
+      });
     }, 1000 + (Math.random() * 4.5));
   }
 </script>
@@ -66,5 +103,7 @@
 </style>
 
 <center><div class="loader" id="loader"></div></center>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div class="container">
+  <canvas id="myChart"></canvas>
+</div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
