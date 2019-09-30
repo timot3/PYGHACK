@@ -23,3 +23,12 @@ In Progress
 - [x] train the model on the data
 - [x] Create a website
 - [ ] Host the website off a service such as Azure or AWS, and use their ML capabilities to run the classifier on the cloud as well
+
+
+Website to-do list:
+- [ ] Host on Azure/laptop to allow ML python file to actually run when CSV is sent
+- [ ] Add more info on the process, just expand on everything and go into more detail on the website - make the words better
+- [ ] Add more graphs/visual aids, edit existing graph colors, font sizes, etc.
+- [ ] clean up code - a lot of what we have is unnecessary
+- [ ] Update main image
+- [ ] Make sure it looks good/works on mobile 
