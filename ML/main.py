@@ -1,12 +1,39 @@
 from sklearn.ensemble import RandomForestRegressor
-
-import data_extraction as data
 import numpy as np
 import math
 import matplotlib.pyplot as plt
 
+import torch
+
+def extract_data_from_file(file, num_rows):
+    list_data = []
+    with open(file, 'r') as fin:
+        line = fin.readline()
+        counter = 1
+        while line:
+            try:
+                temp = line.split(',')[2:]
+#                temp[-1] = temp[-1][:-1]
+                list_data.append(list(map(float, temp)))
+            except:
+                counter = counter
+#            if counter % 1000 == 0:
+#                print("%.2f%% Finished" % (counter / num_rows * 100))
+            
+            line = fin.readline()
+            counter = counter + 1
+    raw_data = torch.as_tensor(list_data).float()
+#    print(raw_data.shape)
+    labels = raw_data[:,-1]
+    features = raw_data[:,:-1]
+
+    return (labels, features)
+
+def normalize(x):
+    return (x - x.mean()) / x.std()
+
 DATA_FILE = 'data.txt'
-NUM_ROWS = 30
+NUM_ROWS = 29569
 TRAIN_VALIDATION_SPLIT = 0.95
 #np.random.seed(3)
 
@@ -16,8 +43,8 @@ def RMSE(x, y):
         acc = acc + (x[i] - y[i])**2
     return math.sqrt(acc / len(x))
 
-print("Loading in Data")
-labels, features = data.extract_data_from_file(DATA_FILE, NUM_ROWS)
+#print("Loading in Data")
+labels, features = extract_data_from_file(DATA_FILE, NUM_ROWS)
 #perm = np.random.permutation(len(labels))
 #features = features[perm].numpy()
 #labels = labels[perm].numpy()
@@ -28,18 +55,18 @@ labels, features = data.extract_data_from_file(DATA_FILE, NUM_ROWS)
 #xval = features[int(len(features) * TRAIN_VALIDATION_SPLIT):, :]
 #yval = labels[int(len(features) * TRAIN_VALIDATION_SPLIT):]
 
-clf = RandomForestRegressor(n_estimators=50)
+clf = RandomForestRegressor(n_estimators=50,)
 
-print("Initializing Training")
+#print("Initializing Training")
 clf.fit(features, labels)
 
-plt.bar([i for i in range(1, 9)], clf.feature_importances_)
+print(*(clf.feature_importances_ * 100))
 
 
 #y_pred = clf.predict(xval)
-#
+
 #acc = RMSE(y_pred, yval)
-#
+
 #print("Model Accuracy: ", acc)
 
 #print(clf.predict([[2.3,16631,15.7,44638,77991,59.7]]))
