@@ -1,0 +1,6 @@
+,"Agriculture, forestry, fishing and hunting, and mining",Construction,Manufacturing,Wholesale trade,Retail trade,"Transportation and warehousing, and utilities",Information,"Finance and insurance, and real estate and rental and leasing","Professional, scientific, and management, and administrative and waste management services","Educational services, and health care and social assistance","Arts, entertainment, and recreation, and accommodation and food services","Other services, except public administration",Public administration
+Feature Importance,0.04,0.2,0.13,0.05,0.02,0.04,0.02,0.08,0.07,0.09,0.21,0.03,0.02
+Correlation,Neutral,Negative,Positive,Negative,Negative,Negative,Negative,Negative,Negative,Positive,Positive,Negative,Positive
+,,,,,,,,,,,,,
+,Positive Correlation:,Negative Correlation:,,,,,,,,,,,
+,"When feature value increases, poverty rate increases","When feature value increases, poverty rate decreases",,,,,,,,,,,

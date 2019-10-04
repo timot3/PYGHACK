@@ -1,0 +1,6 @@
+,Average Household Size,Speaking a Language Other than English at Home,Mean Travel Time to Work (Minutes),Assessed population,Employment/Population Ratio (%),Owner-Occupied,Renter-Occupied,High school graduate or equivalency,Associate's degree,Bachelor's degree,Graduate or professional degree
+Feature Importance,0.04,0.09,0.09,0.03,0.16,0.02,0.21,0.04,0.25,0.04,0.02
+Correlation,Positive,Negative,Slight positive,Negative,Negative,Negative,Negative,Slight Negative,Negative,Negative,Neutral
+,,,,,,,,,,,
+,Positive Correlation:,Negative Correlation:,,,,,,,,,
+,"When feature value increases, poverty rate increases","When feature value increases, poverty rate decreases",,,,,,,,,
