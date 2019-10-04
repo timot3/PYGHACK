@@ -1,0 +1,69 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var newData = [17, 11, 16, 3, 8, 4, 16, 7, 10, 5, 3];
+    var filePath = 'files/output.txt';
+    var result = null;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", filePath, false);
+    xmlhttp.send();
+    if (xmlhttp.status==200) {
+      result = xmlhttp.responseText;
+    }
+    newData = result.split(' ').map(Number);
+
+    var myChart = document.getElementById('myChart').getContext('2d');
+
+    var barChart = new Chart(myChart, {
+      type: 'bar',
+      data: {
+        labels: ["Total Population", "Average Family Size", "LOTE", "Mean Travel Time to Work", "Hispanic or Latino", "High School Enrollment", "College or Graduate School Enrollment", "Median Mortgage Status of Owners with Mortgage"],
+        datasets: [{
+          label: 'Percent',
+          data: newData,
+          backgroundColor: [
+            'rgba(73, 166, 247, 0.6)',
+            'rgba(73, 247, 102, 0.6)',
+            'rgba(206, 57, 132, 0.6)',
+            'rgba(11, 142, 116, 0.6)',
+            'rgba(102, 51, 0, 0.6)',
+            'rgba(53, 43, 234, 0.6)',
+            'rgba(128, 122, 210, 0.6)',
+            'rgba(232, 44, 44, 0.6)'
+          ],
+          hoverBorderWidth: 2,
+          hoverBorderColor: 'black'
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Importance of Different Features on Poverty Rate',
+          fontSize: 25
+        },
+        scales: {
+          yAxes: [{
+            display: true,
+            ticks: {beginAtZero: true},
+            scaleLabel: {
+              display: true,
+              labelString: 'Importance'
+            }
+          }],
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Feature'
+            }
+          }]
+        },
+        legend: {display: false}
+      }
+    });
+  }
+</script>
+<div class="container">
+  <canvas id="myChart"></canvas>
+</div>

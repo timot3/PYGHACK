@@ -1,0 +1,16 @@
+<?php
+#!/usr/bin/env python
+//	$dir = 'files/';
+//	if(!file_exists($dir)) {
+//		mkdir($dir, 0744);
+//	}
+
+  $command = escapeshellcmd('test.py');
+  $output = shell_exec($command);
+  echo $output;
+
+
+//	file_put_contents($dir.'/output.txt', $output);
+//  header('Location: http://23.99.220.51/run_script.html?success=true');
+
+?>

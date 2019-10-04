@@ -107,6 +107,7 @@
         <!-- Graph -->
         <div class="container">
           <canvas id="mainChart"></canvas>
+          <canvas id="chart2"></canvas>
         </div>
 
         <script>
@@ -120,17 +121,17 @@
                 label: 'Percent',
                 data: [17, 11, 16, 3, 8, 4, 16, 7, 10, 5, 3],
                 backgroundColor: [
+                  'rgba(73, 247, 102, 0.6)',
+                  'rgba(206, 57, 132, 0.6)',
+                  'rgba(11, 142, 116, 0.6)',
                   'rgba(255, 99, 132, 0.6)',
-                  'rgba(255, 59, 21, 0.6)',
-                  'rgba(53, 43, 234, 0.6)',
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(255, 59, 21, 0.6)',
-                  'rgba(53, 43, 234, 0.6)',
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(255, 59, 21, 0.6)',
-                  'rgba(53, 43, 234, 0.6)',
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(255, 59, 21, 0.6)'
+                  'rgba(210, 30, 21, 0.6)',
+                  'rgba(140, 40, 200, 0.6)',
+                  'rgba(195, 150, 75, 0.6)',
+                  'rgba(123, 45, 50, 0.6)',
+                  'rgba(153, 120, 120, 0.6)',
+                  'rgba(155, 199, 32, 0.6)',
+                  'rgba(25, 159, 121, 0.6)'
                 ],
                 hoverBorderWidth: 2,
                 hoverBorderColor: 'black'
@@ -140,6 +141,56 @@
               title: {
                 display: true,
                 text: 'Importance of Different Features on Poverty Rate',
+                fontSize: 25
+              },
+              scales: {
+                yAxes: [{
+                  display: true,
+                  ticks: {beginAtZero: true},
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Importance'
+                  }
+                }],
+                xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Feature'
+                  }
+                }]
+              },
+              legend: {display: false}
+            }
+          });
+
+          var chart2 = document.getElementById('chart2').getContext('2d');
+
+          var barChart = new Chart(chart2, {
+            type: 'bar',
+            data: {
+              labels: ["Total Population", "Average Family Size", "LOTE", "Mean Travel Time to Work", "Hispanic or Latino", "High School Enrollment", "College or Graduate School Enrollment", "Median Mortgage Status of Owners with Mortgage"],
+              datasets: [{
+                label: 'Percent',
+                data: [11, 18, 10, 13, 11, 9, 8, 20],
+                backgroundColor: [
+                  'rgba(73, 166, 247, 0.6)',
+                  'rgba(73, 247, 102, 0.6)',
+                  'rgba(206, 57, 132, 0.6)',
+                  'rgba(11, 142, 116, 0.6)',
+                  'rgba(102, 51, 0, 0.6)',
+                  'rgba(53, 43, 234, 0.6)',
+                  'rgba(128, 122, 210, 0.6)',
+                  'rgba(232, 44, 44, 0.6)'
+                ],
+                hoverBorderWidth: 2,
+                hoverBorderColor: 'black'
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: 'Importance of Different Features on Poverty Rate (New Model)',
                 fontSize: 25
               },
               scales: {
@@ -215,11 +266,11 @@
 
       <div class="row">
         <div class="tim-typo">
-          <h4> See what features are most important in determining poverty in your own area</h4>
+          <h4>See what features are most important in determining poverty in your own area</h4>
 
-          <form action="run_script.html">
-            <input type="file" name="csv" accept="csv/*">
-            <input class="btn btn-primary" type="submit">
+          <form action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="fileToUpload" id="fileToUpload" accept=".csv">
+            <input class="btn btn-primary" type="submit" value="Upload CSV">
           </form>
 
           <div class="row">
