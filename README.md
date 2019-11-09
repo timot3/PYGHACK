@@ -16,7 +16,7 @@ to generate a model that would identify the most important features that influen
 
 We hope our approach can be useful for iterative reductions to poverty, by allocating more money to the most influential factors first.
 
-Website: [cu-poverty.ml](http://cu-poverty.ml)
+Website: [cu-poverty.ml](http://cu-poverty.ml) (Down since Nov. 09, 2019)
 
 In Progress
 - [x] Aggregate all data in one location
@@ -26,9 +26,8 @@ In Progress
 
 
 Website to-do list:
-- [ ] Host on Azure and allow ML python file to actually run when CSV is sent
+- [x] Host on Azure and allow ML python file to actually run when CSV is sent (Website is now down)
 - [ ] Add more info on the process, just expand on everything and go into more detail on the website - make the words better as well
 - [ ] Add more graphs/visual aids, edit existing graph colors, font sizes, etc.
 - [x] clean up code - a lot of what we have is unnecessary
-- [ ] Update main image
 - [ ] Make sure it looks good/works on mobile
